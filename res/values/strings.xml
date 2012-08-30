@@ -1,0 +1,8 @@
+<resources>
+
+    <string name="app_name">PhotoAlbum3</string>
+    <string name="hello_world">PhotoAlbum3</string>
+    <string name="menu_settings">Settings</string>
+    <string name="title_activity_main">PhotoAlbum3</string>
+
+</resources>
