@@ -20,7 +20,7 @@ import android.widget.Spinner;
 
 public class SimplePhotoAlbumAdd extends Activity {
 	
-	// •”•i‚ÌéŒ¾
+	// éƒ¨å“ã®å®£è¨€
 	ImageView imageViewAdd;
 	Spinner spinnerAdd;
 	EditText editTextAdd;
@@ -31,70 +31,70 @@ public class SimplePhotoAlbumAdd extends Activity {
     ////////////////////////////////////////////////////////    														
     /**
      * onCreate
-     * @param con@ƒRƒlƒNƒVƒ‡ƒ“‚Å‚·
-     * @param tradebean@“ü—ÍƒtƒH[ƒ€‚É“ü—Í‚³‚ê‚½•¶š‚ª“ü‚Á‚Ä‚¢‚Ü‚·
-     * @return ‚È‚µ
-     * @throws SQLException SQLÀs‚É‹N‚«‚è‚¤‚é—áŠO
+     * @param conã€€ã‚³ãƒã‚¯ã‚·ãƒ§ãƒ³ã§ã™
+     * @param tradebeanã€€å…¥åŠ›ãƒ•ã‚©ãƒ¼ãƒ ã«å…¥åŠ›ã•ã‚ŒãŸæ–‡å­—ãŒå…¥ã£ã¦ã„ã¾ã™
+     * @return ãªã—
+     * @throws SQLException SQLå®Ÿè¡Œæ™‚ã«èµ·ãã‚Šã†ã‚‹ä¾‹å¤–22
      */
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
-		// TODO ©“®¶¬‚³‚ê‚½ƒƒ\ƒbƒhEƒXƒ^ƒu
+		// TODO è‡ªå‹•ç”Ÿæˆã•ã‚ŒãŸãƒ¡ã‚½ãƒƒãƒ‰ãƒ»ã‚¹ã‚¿ãƒ–
 		super.onCreate(savedInstanceState);
-		// ƒŒƒCƒAƒEƒg‚ÌƒZƒbƒg
+		// ãƒ¬ã‚¤ã‚¢ã‚¦ãƒˆã®ã‚»ãƒƒãƒˆ
 		setContentView(R.layout.activity_add);
 		
-		// ƒŒƒCƒAƒEƒgã‚Ì•”•i‚ğ•Ï”‚É‘ã“ü
+		// ãƒ¬ã‚¤ã‚¢ã‚¦ãƒˆä¸Šã®éƒ¨å“ã‚’å¤‰æ•°ã«ä»£å…¥
 		imageViewAdd 
 			= (ImageView)findViewById(R.id.ImageViewAdd);
 		spinnerAdd = (Spinner)findViewById(R.id.SpinnerAdd);
 		editTextAdd = (EditText)findViewById(R.id.EditTextAdd);
 		ratingBarAdd = (RatingBar)findViewById(R.id.RatingBarAdd);
 		
-		// SDƒJ[ƒh‚Ì‰æ‘œƒtƒ@ƒCƒ‹ŒQ‚ğƒXƒsƒi[‚ÉƒZƒbƒg
-		// adapter‚Ìì¬
+		// SDã‚«ãƒ¼ãƒ‰ã®ç”»åƒãƒ•ã‚¡ã‚¤ãƒ«ç¾¤ã‚’ã‚¹ãƒ”ãƒŠãƒ¼ã«ã‚»ãƒƒãƒˆ
+		// adapterã®ä½œæˆ
 		ArrayAdapter<String> adapter
 			= new ArrayAdapter<String>(this,
 					android.R.layout.simple_spinner_item);
-		// SDƒJ[ƒh‚ÌƒfƒBƒŒƒNƒgƒŠ‚ğæ“¾
+		// SDã‚«ãƒ¼ãƒ‰ã®ãƒ‡ã‚£ãƒ¬ã‚¯ãƒˆãƒªã‚’å–å¾—
 		File directory
 			= Environment.getExternalStorageDirectory();
-		// SDƒJ[ƒh‚ÌƒfƒBƒŒƒNƒgƒŠ‚©‚ç‚·‚×‚Ä‚Ìƒtƒ@ƒCƒ‹‚ğæ“¾
+		// SDã‚«ãƒ¼ãƒ‰ã®ãƒ‡ã‚£ãƒ¬ã‚¯ãƒˆãƒªã‹ã‚‰ã™ã¹ã¦ã®ãƒ•ã‚¡ã‚¤ãƒ«ã‚’å–å¾—
 		File[] files = directory.listFiles();
-		// adapter‚Éƒtƒ@ƒCƒ‹–¼‚ğ’Ç‰Á
+		// adapterã«ãƒ•ã‚¡ã‚¤ãƒ«åã‚’è¿½åŠ 
 		for ( int i=0; i<files.length; i++ ){
-			// JPEGƒtƒ@ƒCƒ‹‚Ì‚İ‚ğ’Ç‰Á
+			// JPEGãƒ•ã‚¡ã‚¤ãƒ«ã®ã¿ã‚’è¿½åŠ 
 			if( files[i].getName().endsWith(".jpg")){
 				adapter.add(files[i].getPath());
 			}
 		}
-		// spinnerAdd‚Éadapter‚ğƒZƒbƒg
+		// spinnerAddã«adapterã‚’ã‚»ãƒƒãƒˆ
 		spinnerAdd.setAdapter(adapter);
 		
-		// spinnerFile‚©‚ç‘I‘ğ‚µ‚½—v‘f‚ğæ‚èo‚·
+		// spinnerFileã‹ã‚‰é¸æŠã—ãŸè¦ç´ ã‚’å–ã‚Šå‡ºã™
 		spinnerAdd.setOnItemSelectedListener(
 				new AdapterView.OnItemSelectedListener(){
 
 					@Override
 					public void onItemSelected(AdapterView<?> arg0, View arg1,
 							int arg2, long arg3) {
-						// TODO ©“®¶¬‚³‚ê‚½ƒƒ\ƒbƒhEƒXƒ^ƒu
-						// ‘I‘ğ‚µ‚½—v‘f‚ÌˆÊ’u‚ğƒƒO‚Éo—Í
+						// TODO è‡ªå‹•ç”Ÿæˆã•ã‚ŒãŸãƒ¡ã‚½ãƒƒãƒ‰ãƒ»ã‚¹ã‚¿ãƒ–
+						// é¸æŠã—ãŸè¦ç´ ã®ä½ç½®ã‚’ãƒ­ã‚°ã«å‡ºåŠ›
 						Log.d("[Spinner]", "Position; "+ arg2);
 						
-						// ‘I‘ğ‚³‚ê‚½ƒtƒ@ƒCƒ‹
+						// é¸æŠã•ã‚ŒãŸãƒ•ã‚¡ã‚¤ãƒ«
 						String selectedFile
 							= (String)arg0.getItemAtPosition(arg2);
-						// ‘I‘ğ‚³‚ê‚½ƒtƒ@ƒCƒ‹‚©‚çƒrƒbƒgƒ}ƒbƒv‚ğ¶¬
+						// é¸æŠã•ã‚ŒãŸãƒ•ã‚¡ã‚¤ãƒ«ã‹ã‚‰ãƒ“ãƒƒãƒˆãƒãƒƒãƒ—ã‚’ç”Ÿæˆ
 						Bitmap bitmap
 							= BitmapFactory.decodeFile(selectedFile);
-						// ƒCƒ[ƒWƒrƒ…[‚Éƒrƒbƒgƒ}ƒbƒv‚ğƒZƒbƒg
+						// ã‚¤ãƒ¡ãƒ¼ã‚¸ãƒ“ãƒ¥ãƒ¼ã«ãƒ“ãƒƒãƒˆãƒãƒƒãƒ—ã‚’ã‚»ãƒƒãƒˆ
 						imageViewAdd.setImageBitmap(bitmap);
 						
 					}
 
 					@Override
 					public void onNothingSelected(AdapterView<?> arg0) {
-						// TODO ©“®¶¬‚³‚ê‚½ƒƒ\ƒbƒhEƒXƒ^ƒu
+						// TODO è‡ªå‹•ç”Ÿæˆã•ã‚ŒãŸãƒ¡ã‚½ãƒƒãƒ‰ãƒ»ã‚¹ã‚¿ãƒ–
 						
 					}
 					
@@ -106,27 +106,27 @@ public class SimplePhotoAlbumAdd extends Activity {
     ////////////////////////////////////////////////////////    														
     /**
      * closeActivity
-     * @param con@ƒRƒlƒNƒVƒ‡ƒ“‚Å‚·
-     * @param tradebean@“ü—ÍƒtƒH[ƒ€‚É“ü—Í‚³‚ê‚½•¶š‚ª“ü‚Á‚Ä‚¢‚Ü‚·
-     * @return ‚È‚µ
-     * @throws SQLException SQLÀs‚É‹N‚«‚è‚¤‚é—áŠO
+     * @param conã€€ã‚³ãƒã‚¯ã‚·ãƒ§ãƒ³ã§ã™
+     * @param tradebeanã€€å…¥åŠ›ãƒ•ã‚©ãƒ¼ãƒ ã«å…¥åŠ›ã•ã‚ŒãŸæ–‡å­—ãŒå…¥ã£ã¦ã„ã¾ã™
+     * @return ãªã—
+     * @throws SQLException SQLå®Ÿè¡Œæ™‚ã«èµ·ãã‚Šã†ã‚‹ä¾‹å¤–
      */
 	public void closeActivity(View view){
-		// Setƒ{ƒ^ƒ“‚ªƒNƒŠƒbƒN‚³‚ê‚½‚Æ‚«‚É’l‚ğ‘—M
+		// Setãƒœã‚¿ãƒ³ãŒã‚¯ãƒªãƒƒã‚¯ã•ã‚ŒãŸã¨ãã«å€¤ã‚’é€ä¿¡
 		if( view.getId() == R.id.ButtonSet){
-			// ƒCƒ“ƒeƒ“ƒg‚Ìƒpƒ‰ƒ[ƒ^‚É’l‚ğƒZƒbƒg‚·‚é
+			// ã‚¤ãƒ³ãƒ†ãƒ³ãƒˆã®ãƒ‘ãƒ©ãƒ¡ãƒ¼ã‚¿ã«å€¤ã‚’ã‚»ãƒƒãƒˆã™ã‚‹
 			Intent intent = new Intent();
 			intent.putExtra("file", spinnerAdd.getSelectedItem().toString());
 			intent.putExtra("title", editTextAdd.getText().toString());
 			intent.putExtra("rating", ratingBarAdd.getRating());
 			
-			// ƒƒCƒ“‰æ–Ê‚Éƒpƒ‰ƒ[ƒ^‚ğ‘—M‚·‚é
+			// ãƒ¡ã‚¤ãƒ³ç”»é¢ã«ãƒ‘ãƒ©ãƒ¡ãƒ¼ã‚¿ã‚’é€ä¿¡ã™ã‚‹
 			setResult(Activity.RESULT_OK, intent);
 			
 		}
 		
 		
-		// “o˜^‰æ–Ê‚ğ•Â‚¶‚é
+		// ç™»éŒ²ç”»é¢ã‚’é–‰ã˜ã‚‹
 		finish();
 	}
 	
