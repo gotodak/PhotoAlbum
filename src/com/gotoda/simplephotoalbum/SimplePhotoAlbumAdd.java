@@ -21,6 +21,7 @@ import android.widget.Spinner;
 public class SimplePhotoAlbumAdd extends Activity {
 	
 	// 部品の宣言
+	// Comment
 	ImageView imageViewAdd;
 	Spinner spinnerAdd;
 	EditText editTextAdd;
